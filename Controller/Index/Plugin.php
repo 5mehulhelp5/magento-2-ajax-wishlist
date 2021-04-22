@@ -48,6 +48,11 @@ class Plugin
     protected $pageFactory;
 
     /**
+     * @var StoreManager
+     */
+    protected $_storeManager;
+
+    /**
      * Plugin constructor.
      *
      * @param ProductRepositoryInterface $productRepository
@@ -63,6 +68,7 @@ class Plugin
         AjaxWishlistHelper $ajaxWishlistHelper,
         CustomerSession $customerSession,
         \Magento\Framework\Message\ManagerInterface $messageManager,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\View\Result\PageFactory $pageFactory
     )
     {
@@ -71,6 +77,7 @@ class Plugin
         $this->ajaxWishlistHelper = $ajaxWishlistHelper;
         $this->customerSession = $customerSession;
         $this->messageManager = $messageManager;
+        $this->_storeManager = $storeManager;
         $this->pageFactory = $pageFactory;
     }
 
@@ -167,11 +174,22 @@ class Plugin
      * @return string
      */
     protected function getSuccessMessage(ProductInterface $product)
-    {
+    {   
+        $popupttl = $this->ajaxWishlistHelper->getConfigModule('general/popupttl');
+        $html = '<div class="mgp-wishlist-popup-border ajaxwishlist-success-box"><img src="'.$this->getBaseUrl()."catalog/product".$product->getImage().'" alt="'.$product->getName().'" width="200" height="200"><div class="ajaxwishlist-buttons"><button type="button" id="ajaxwishlist_btn_close_popup" class="action primary mgp-wishlist-close" title="Close" > Close (<span class="wishlist-autoclose-countdown">'.$popupttl.'</span>)</button><button type="button" id="wishlist_checkout" class="action wishlist primary"><span>View Wishlist</span></button></div>';
         return str_replace(
             '{product.name}',
             sprintf('<strong>%s</strong>', $product->getName()),
-            $this->ajaxWishlistHelper->getConfigModule('general/success_message_text')
+            $this->ajaxWishlistHelper->getConfigModule('general/success_message_text').$html
         );
+    }
+
+    /**
+     * [getBaseUrl description]
+     * @return [type] [description]
+     */
+    public function getBaseUrl()
+    {
+       return $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
     }
 }

@@ -3,7 +3,7 @@ define([
     'Magento_Ui/js/modal/alert',
     'Magepow_AjaxWishlist/js/ajaxwishlist',
     'jquery/ui',
-    'Magento_Wishlist/wishlist',
+    'Magento_Wishlist/js/wishlist',
     'mage/loader'
 ], function($, alert) {
     'use strict';

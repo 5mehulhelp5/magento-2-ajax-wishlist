@@ -29,6 +29,11 @@
                     <label>Success Message Text</label>
                     <comment>Change the message that appears after adding to wishlist.</comment>
                 </field>
+                <field id="popupttl" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Popup Will Close After</label>
+                    <validate>validate-digits validate-digits-range digits-range-0-</validate>
+                </field>
             </group>
         </section>
     </system>
