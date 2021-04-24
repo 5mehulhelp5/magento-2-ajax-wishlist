@@ -31,6 +31,7 @@ define([
         },
         
         closePopup: function() {
+            var seld = this;
             $(document).on('click', '#ajaxwishlist_btn_close_popup' , function() {
                 $(self.options.buttonClose).trigger('click');
             })
