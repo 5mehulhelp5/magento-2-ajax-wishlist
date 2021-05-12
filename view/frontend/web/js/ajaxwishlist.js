@@ -1,11 +1,12 @@
 define([
     'jquery',
+     'Magento_Ui/js/modal/modal',
     'mage/template',
-    'Magento_Ui/js/modal/alert',
+    'mage/url',
     'jquery/ui',
-    'mage/loader',
-    'mage/url'
-], function($, mageTemplate, alert, url) {
+    'mage/loader'
+   
+], function($, modal, mageTemplate, url) {
     'use strict';
 
     $.widget('.ajaxWishlist', {
@@ -20,7 +21,10 @@ define([
             isShowSpinner: true,
             isShowSuccessMessage: true,
             customerLoginUrl: null,
-            buttonClose: '.action-close'
+            buttonClose: '.action-close',
+            popupWrapperSelector: '.show-popup-wapper-wishlist',
+            popupTtl: null
+
         },
 
         _create: function() {
@@ -28,18 +32,18 @@ define([
             this._bind();
             this.viewWishlist();
             this.closePopup();
-        },
-        
-        closePopup: function() {
-            var self = this;
-            $(document).on('click', '#ajaxwishlist_btn_close_popup' , function() {
-                $(self.options.buttonClose).trigger('click');
-            })
+            
         },
 
+        closePopup: function() {
+            $(document).on('click', '#ajaxwishlist_btn_close_popup' , function() {
+                $(this.options.buttonClose).trigger('click');
+            })
+        },
+        
         viewWishlist: function(){
             $(document).on('click', "#wishlist_checkout", function() {
-                window.location.replace('wishlist');
+                window.location.replace(url.build('wishlist'));
             })
         },
         _bind: function () {
@@ -51,9 +55,9 @@ define([
             $('body').on('click', selectors.join(','), $.proxy(this._processViaAjax, this));
         },
 
+
         _processViaAjax: function(event) {
-            var
-                post = $(event.currentTarget).data('post'),
+            var post = $(event.currentTarget).data('post'),
                 url = post.action,
                 data = $.extend(post.data, {form_key: $(this.options.formKeyInputSelector).val()});
             $.ajax(url, {
@@ -68,45 +72,42 @@ define([
 
         _successHandler: function(data) {
             var self = this;
-            if (!data.success && data.error == 'not_logged_in') {
-                alert({
-                    title: 'Ajax Wishlist',
-                    content: mageTemplate(this.options.notLoggedInErrorMessage, {
-                        url: this.options.customerLoginUrl
-                    })
-                });
-
-                return;
-            }
-
+            if (!data.success && data.error == 'not_logged_in') return;
             $(this.options.wishlistBlockSelector).replaceWith(data.wishlist);
             $('body').trigger('contentUpdated');
-
             if (this.options.isShowSuccessMessage && data.message) {
-                alert({
-                    title: 'Ajax Wishlist',
-                    content: data.message
-                });
-                var wishlist_autoclose_countdown = setInterval(function (wrapper) {
+                $(self.options.popupWrapperSelector).html(data.message);
+                self._showPopup();
+                if (self.options.popupTtl) {
+                    var wishlist_autoclose_countdown = setInterval(function (wrapper) {
                     var leftTimeNode = $(document).find('#ajaxwishlist_btn_close_popup .wishlist-autoclose-countdown');
                     var leftTime = parseInt(leftTimeNode.text()) - 1;                   
                     leftTimeNode.text(leftTime);
                     if (leftTime <= 0) {
                         $(self.options.buttonClose).trigger('click').fadeOut('slow');
-                        clearInterval(wishlist_autoclose_countdown);
-                        
-                        
-                    }
-                }, 1000);
+                        clearInterval(wishlist_autoclose_countdown);  
+                        }
+                    }, 1000);
+                }
                 self.viewWishlist();
             }
         },
 
+        _showPopup: function() {
+            var self = this;
+            var modaloption = {
+                type: 'popup',
+                modalClass: 'modal-popup_ajaxwishlist_magepow',
+                responsive: true,
+                innerScroll: true,
+                clickableOverlay: true
+            };
+            var callforoption = modal(modaloption, $(self.options.popupWrapperSelector));
+            $(self.options.popupWrapperSelector).modal('openModal');
+        },
+
         _errorHandler: function () {
-            alert({
-                title: 'Ajax Wishlist',
-                content: mageTemplate(this.options.errorMessage)
-            });
+            console.warn("Add to the wish list unsuccessful");
         }
 
     });

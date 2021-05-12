@@ -2,19 +2,25 @@
 
 namespace Magepow\AjaxWishlist\Helper;
 
+use Magento\Store\Model\StoreManagerInterface;
+
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
+
     /**
      * @var array
      */
     protected $configModule;
+    protected $_storeManager;
 
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context
+        \Magento\Framework\App\Helper\Context $context,
+           \Magento\Store\Model\StoreManagerInterface $storeManager
     )
     {
         parent::__construct($context);
         $this->configModule = $this->getConfig(strtolower($this->_getModuleName()));
+         $this->_storeManager = $storeManager;
     }
 
     public function getConfig($cfg='')
@@ -41,4 +47,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         }
         return $value;
     }
+
+    public function getBaseUrlMedia()
+    {
+       return $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+    }
+
 }

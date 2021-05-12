@@ -66,7 +66,8 @@ class Configure extends \Magento\Framework\View\Element\Template
             'isShowSpinner' => $this->ajaxWishlistHelper->getConfigModule('general/show_spinner'),
             'isShowSuccessMessage' => $this->ajaxWishlistHelper->getConfigModule('general/show_success_message'),
             'successMessageText' => $this->ajaxWishlistHelper->getConfigModule('general/success_message_text'),
-            'customerLoginUrl' => $this->_urlBuilder->getUrl(Url::ROUTE_ACCOUNT_LOGIN)
+            'customerLoginUrl' => $this->_urlBuilder->getUrl(Url::ROUTE_ACCOUNT_LOGIN),
+            'popupTtl' => $this->ajaxWishlistHelper->getConfigModule('general/popupttl')
         ];
     }
 }
