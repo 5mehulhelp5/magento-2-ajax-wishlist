@@ -13,7 +13,7 @@ define([
     $.widget('ajaxwishlist.customerAuthenticationPopup', {
         options: {
             login: '#customer-popup-login',
-            prevLogin: 'a.towishlist'
+            prevLogin: 'a.action.towishlist'
         },
         _create: function () {
             var self = this,
