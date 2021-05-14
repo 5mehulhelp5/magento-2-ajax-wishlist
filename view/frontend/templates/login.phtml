@@ -47,11 +47,13 @@
                             <div class="control">
                                 <input name="password" type="password" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> class="input-text" id="pass-login" title="<?php /* @escapeNotVerified */ echo __('Password') ?>" data-validate="{required:true}" >
                             </div>
+                            <div class="secondary"><a href="<?php echo $this->getUrl('customer/account/forgotpassword/') ?>">Forgot Your Password?</a></div>
                         </div>
+                         
                         <div class="actions-toolbar">
                             <div class="primary"><button type="submit" class="action login primary" name="send" id="send2-login"><span><?php /* @escapeNotVerified */ echo __('Sign In') ?></span></button></div>
-                            <div class="secondary"><a href="<?php echo $this->getUrl('customer/account/forgotpassword/') ?>">Forgot Your Password?</a></div>
-                            <div class="or-login"><h3>Or</h3></div>
+                           
+                           
                             <?php if ($block->getRegistration()->isAllowed()): ?>
                                 
                                 <div class="secondary"><a class="action remind" href="<?php /* @escapeNotVerified */ echo $block->getCustomerRegistrationUrl() ?>" id="customer-popup-registration"><span><?php /* @escapeNotVerified */ echo __('Create an Account?') ?></span></a></div>

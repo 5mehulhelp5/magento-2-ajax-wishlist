@@ -18,7 +18,7 @@ define([
             formKeyInputSelector: 'input[name="form_key"]',
             notLoggedInErrorMessage: 'Please <a href="<%- url %>">log in</a> to be able add items to wishlist.',
             errorMessage: 'There is an error occurred while processing the request.',
-            isShowSpinner: true,
+            isShowSpinner: null,
             isShowSuccessMessage: true,
             customerLoginUrl: null,
             buttonClose: '.action-close',
