@@ -2,6 +2,7 @@
     "name" : "magepow/ajaxwishlist",
     "description": "Ajax Wishlist",
     "require": {
+        "magento/module-wishlist": "*"
         "magepow/core": "^1.0.0"
     },
     "type": "magento2-module",
@@ -24,8 +25,5 @@
         "files": [
             "registration.php"
         ]
-    },
-    "require": {
-        "magento/module-wishlist": "*"
     }
 }
