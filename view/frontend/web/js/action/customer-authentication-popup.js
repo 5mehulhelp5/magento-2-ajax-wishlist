@@ -29,6 +29,7 @@ define([
 
             // Show the login form in a popup when clicking on the sign in text
             $('body').on('click', self.options.prevLogin, function() {
+                $(self.options.login).removeClass('_disabled');
                 $(self.options.login).modal('openModal');
 
                 return false;
