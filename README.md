@@ -47,7 +47,7 @@ php bin/magento setup:static-content:deploy -f
 
   `Login to Magento admin > Stores > Configuration > Magepow > Ajax Wishlist > General Options > Enable > Choose Yes to enable the module.`
   
-  ![Image of Magento admin config](https://github.com/magepow/magento-2-ajax-wishlist/blob/master/media/backend_config.png)
+  ![Image of Magento admin config](https://github.com/magepow/magento-2-ajax-wishlist/blob/master/media/config_wishlist.png)
   
    In `Stores > Configuration > Magepow > Ajax Wishlist > General Options` we set: 
    * **Show Spinner**: Turn on to enable showing spinner while processing the request.
