@@ -65,8 +65,8 @@ php bin/magento setup:static-content:deploy -f
    ```
   ### 2.2. Result
    
-   ![Image of magento store front](https://github.com/magepow/magento2-infinitescroll/blob/master/media/result_frontend_1.png)
-   ![Image of magento store front](https://github.com/magepow/magento2-infinitescroll/blob/master/media/result_frontend_2.png)
+   ![Image of magento store front](https://github.com/magepow/magento-2-ajax-wishlist/blob/master/media/popup.png)
+   ![Image of magento store front](https://github.com/magepow/magento-2-ajax-wishlist/blob/master/media//show_image_form_login.png)
 
  ## Donation
 
