@@ -13,8 +13,6 @@
 
 **See more information**:
 
-- [Detail](https://magepow.com/magento-2-infinite-scroll-extension.html)
-
 - [Documentation](https://docs.alothemes.com/m2/extension/ajaxwishlist/)
 
 - [Video tutorial](https://www.youtube.com/watch?v=gTemvUzrOJg&t=57s)
@@ -37,11 +35,11 @@ php bin/magento setup:static-content:deploy -f
 ```
 
 ### Step 2: User guide
-  #### Key features of Magento 2 Infinite scroll Extension:
+  #### Key features of Magento 2 Ajax Wishlist Extension:
   * Ajax wishlist without interruption.
-  * No more page reloads
+  * No more page redirect url
   * Improve shopping experiences.
-  * BIncrease the conversion rate at your store.
+  * Increase the conversion rate at your store.
   * Possibility to give/ share links to a certain positions.
   * Easy to customize.
   
@@ -49,7 +47,7 @@ php bin/magento setup:static-content:deploy -f
 
   `Login to Magento admin > Stores > Configuration > Magepow > Ajax Wishlist > General Options > Enable > Choose Yes to enable the module.`
   
-  ![Image of Magento admin config](https://github.com/magepow/magento2-ajaxwishlist/blob/master/media/backend_config.png)
+  ![Image of Magento admin config](https://github.com/magepow/magento-2-ajax-wishlist/blob/master/media/backend_config.png)
   
    In `Stores > Configuration > Magepow > Ajax Wishlist > General Options` we set: 
    * **Show Spinner**: Turn on to enable showing spinner while processing the request.
