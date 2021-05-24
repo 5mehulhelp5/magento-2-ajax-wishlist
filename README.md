@@ -9,6 +9,14 @@
 
 This is one of the great features is the favorite products on the website that many people often use to save the products they like so they can find them again or review them when they want to order.
 
+**See more information**:
+
+- Detail Desxription: [Magento 2 Ajax Wishlist](https://magepow.com/ajax-add-to-wish-extension-for-magento-2-magepow.html)
+
+- [Documentation](https://docs.alothemes.com/m2/extension/ajaxwishlist/)
+
+- [Video tutorial](https://www.youtube.com/watch?v=gTemvUzrOJg&t=57s)
+
 ### Full-featured: 
 
 - Add products to wishlist without navigating to another page
@@ -27,14 +35,6 @@ Wishlist is a very important feature that most e-commerce websites must use
 
 [![Latest Stable Version](https://poser.pugx.org/magepow/ajaxwishlist/v/stable)](https://packagist.org/packages/magepow/ajaxwishlist)
 [![Total Downloads](https://poser.pugx.org/magepow/ajaxwishlist/downloads)](https://packagist.org/packages/magepow/ajaxwishlist)
-
-**See more information**:
-
-- Detail Desxription: [Magento 2 Ajax Wishlist](
-
-- [Documentation](https://docs.alothemes.com/m2/extension/ajaxwishlist/)
-
-- [Video tutorial](https://www.youtube.com/watch?v=gTemvUzrOJg&t=57s)
 
 ## How to use Ajax Wishlist extension
 Before you continue, ensure you meet the following requirements:
