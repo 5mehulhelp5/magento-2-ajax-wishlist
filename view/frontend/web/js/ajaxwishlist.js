@@ -70,13 +70,17 @@ define([
             event.preventDefault();
         },
 
-        _successHandler: function(data) {
-            var self = this;
+      _successHandler: function(data) {
+            var self = this,
+                wishlistPopup = $(self.options.popupWrapperSelector),
+                body = $('body');
             if (!data.success && data.error == 'not_logged_in') return;
             $(this.options.wishlistBlockSelector).replaceWith(data.wishlist);
             $('body').trigger('contentUpdated');
             if (this.options.isShowSuccessMessage && data.message) {
-                $(self.options.popupWrapperSelector).html(data.message);
+                if (!wishlistPopup.length) {
+                    body.append('<div class="show-popup-wapper-wishlist">'+data.message+'</div>');
+                }
                 self._showPopup();
                 if (self.options.popupTtl) {
                     var wishlist_autoclose_countdown = setInterval(function (wrapper) {
@@ -94,16 +98,20 @@ define([
         },
 
         _showPopup: function() {
-            var self = this;
+            var self = this,
+                wishlistPopup = $(self.options.popupWrapperSelector);
             var modaloption = {
                 type: 'popup',
                 modalClass: 'modal-popup_ajaxwishlist_magepow',
                 responsive: true,
                 innerScroll: true,
-                clickableOverlay: true
+                clickableOverlay: true,
+                closed: function(){
+                   $('.modal-popup_ajaxwishlist_magepow').remove();
+                }
             };
-            var callforoption = modal(modaloption, $(self.options.popupWrapperSelector));
-            $(self.options.popupWrapperSelector).modal('openModal');
+            modal(modaloption, wishlistPopup);
+            wishlistPopup.modal('openModal');
         },
 
         _errorHandler: function () {
