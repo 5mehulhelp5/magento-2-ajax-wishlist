@@ -9,7 +9,7 @@ define([
 ], function($, modal, mageTemplate, url) {
     'use strict';
 
-    $.widget('.ajaxWishlist', {
+    $.widget('magepow.ajaxWishlist', {
 
         options: {
             addToWishlistSelector: '[data-action="add-to-wishlist"]',
@@ -23,8 +23,9 @@ define([
             customerLoginUrl: null,
             buttonClose: '.action-close',
             popupWrapperSelector: '.show-popup-wapper-wishlist',
-            popupTtl: null
-
+            popupTtl: null,
+            wishlistClass: 'a.action.towishlist',
+            login: '#customer-popup-login'
         },
 
         _create: function() {
@@ -74,9 +75,17 @@ define([
             var self = this,
                 wishlistPopup = $(self.options.popupWrapperSelector),
                 body = $('body');
-            if (!data.success && data.error == 'not_logged_in') return;
+            if (!data.success && data.error == 'not_logged_in'){
+                if (!$(self.options.login).length) {
+                    body.append(data.login);                   
+                }
+                 self._popupLogin();
+                 console.log(data.login)
+                
+                return false;
+            } 
             $(this.options.wishlistBlockSelector).replaceWith(data.wishlist);
-            $('body').trigger('contentUpdated');
+            body.trigger('contentUpdated');
             if (this.options.isShowSuccessMessage && data.message) {
                 if (!wishlistPopup.length) {
                     body.append('<div class="show-popup-wapper-wishlist">'+data.message+'</div>');
@@ -97,6 +106,25 @@ define([
             }
         },
 
+        _popupLogin: function(){
+            var self = this,
+                loginPopup = $(self.options.login);
+            var authentication_options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                buttons: false,
+                modalClass : 'customer-popup-ajaxwishlist',
+                closed: function(){
+                   $('.customer-popup-ajaxwishlist').remove();
+                }
+
+            };
+            modal(authentication_options, loginPopup);
+            loginPopup.removeClass('_disabled');
+            loginPopup.modal('openModal');
+
+        },
         _showPopup: function() {
             var self = this,
                 wishlistPopup = $(self.options.popupWrapperSelector);
@@ -120,6 +148,6 @@ define([
 
     });
 
-    return $.ajaxWishlist;
+    return $.magepow.ajaxWishlist;
 
 });

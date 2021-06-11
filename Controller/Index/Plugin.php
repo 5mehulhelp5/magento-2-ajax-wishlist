@@ -102,7 +102,10 @@ class Plugin
                 $this->jsonHelper->jsonEncode(
                     [
                         'success' => false,
-                        'error'   => 'not_logged_in'
+                        'error'   => 'not_logged_in',
+                        'login'   =>  $this->pageFactory->create()->getLayout()
+                                      ->createBlock(\Magepow\AjaxWishlist\Block\Form\Login::class)
+                                      ->setTemplate('Magepow_AjaxWishlist::login.phtml')->toHtml()
                     ]
                 )
             );
