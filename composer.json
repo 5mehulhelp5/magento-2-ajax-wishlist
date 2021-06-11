@@ -1,23 +1,8 @@
 {
     "name" : "magepow/ajaxwishlist",
     "description": "Ajax Wishlist",
-    "require": {
-        "magento/module-wishlist": "*",
-        "magepow/core": "^1.0.0"
-    },
     "type": "magento2-module",
-     "license": [
-        "OSL-3.0",
-        "AFL-3.0"
-    ],
-    "authors": [
-        {
-            "name": "Magepow",
-            "email": "support@magepow.com",
-            "homepage": "https://magepow.com",
-            "role": "Technical Support"
-        }
-    ],
+    "version": "1.0.0-beta",
     "autoload": {
         "psr-4": {
             "Magepow\\AjaxWishlist\\": ""
@@ -25,5 +10,8 @@
         "files": [
             "registration.php"
         ]
+    },
+    "require": {
+        "magento/module-wishlist": "*"
     }
 }

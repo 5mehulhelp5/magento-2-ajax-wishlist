@@ -41,12 +41,14 @@ class Login extends \Magento\Framework\View\Element\Template {
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Framework\App\Http\Context $httpContext,
         \Magento\Customer\Model\Registration $registration,
+        \Magento\Theme\Block\Html\Header\Logo $logo,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->customerSession = $customerSession;
         $this->httpContext = $httpContext;
         $this->registration = $registration;
+        $this->_logo = $logo;
     }
 
     /**
@@ -58,6 +60,16 @@ class Login extends \Magento\Framework\View\Element\Template {
     {
         return $this->registration;
     }
+     /**
+     * Get logo image URL
+     *
+     * @return string
+     */
+    public function getLogoSrc()
+    {    
+        return $this->_logo->getLogoSrc();
+    }
+    
 
     /**
      * Retrieve form posting url

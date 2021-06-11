@@ -9,7 +9,7 @@ define([
 ], function($, modal, mageTemplate, url) {
     'use strict';
 
-    $.widget('magepow.ajaxWishlist', {
+    $.widget('.ajaxWishlist', {
 
         options: {
             addToWishlistSelector: '[data-action="add-to-wishlist"]',
@@ -18,14 +18,13 @@ define([
             formKeyInputSelector: 'input[name="form_key"]',
             notLoggedInErrorMessage: 'Please <a href="<%- url %>">log in</a> to be able add items to wishlist.',
             errorMessage: 'There is an error occurred while processing the request.',
-            isShowSpinner: null,
+            isShowSpinner: true,
             isShowSuccessMessage: true,
             customerLoginUrl: null,
             buttonClose: '.action-close',
             popupWrapperSelector: '.show-popup-wapper-wishlist',
-            popupTtl: null,
-            wishlistClass: 'a.action.towishlist',
-            login: '#customer-popup-login'
+            popupTtl: null
+
         },
 
         _create: function() {
@@ -71,25 +70,13 @@ define([
             event.preventDefault();
         },
 
-      _successHandler: function(data) {
-            var self = this,
-                wishlistPopup = $(self.options.popupWrapperSelector),
-                body = $('body');
-            if (!data.success && data.error == 'not_logged_in'){
-                if (!$(self.options.login).length) {
-                    body.append(data.login);                   
-                }
-                 self._popupLogin();
-                 console.log(data.login)
-                
-                return false;
-            } 
+        _successHandler: function(data) {
+            var self = this;
+            if (!data.success && data.error == 'not_logged_in') return;
             $(this.options.wishlistBlockSelector).replaceWith(data.wishlist);
-            body.trigger('contentUpdated');
+            $('body').trigger('contentUpdated');
             if (this.options.isShowSuccessMessage && data.message) {
-                if (!wishlistPopup.length) {
-                    body.append('<div class="show-popup-wapper-wishlist">'+data.message+'</div>');
-                }
+                $(self.options.popupWrapperSelector).html(data.message);
                 self._showPopup();
                 if (self.options.popupTtl) {
                     var wishlist_autoclose_countdown = setInterval(function (wrapper) {
@@ -106,40 +93,17 @@ define([
             }
         },
 
-        _popupLogin: function(){
-            var self = this,
-                loginPopup = $(self.options.login);
-            var authentication_options = {
-                type: 'popup',
-                responsive: true,
-                innerScroll: true,
-                buttons: false,
-                modalClass : 'customer-popup-ajaxwishlist',
-                closed: function(){
-                   $('.customer-popup-ajaxwishlist').remove();
-                }
-
-            };
-            modal(authentication_options, loginPopup);
-            loginPopup.removeClass('_disabled');
-            loginPopup.modal('openModal');
-
-        },
         _showPopup: function() {
-            var self = this,
-                wishlistPopup = $(self.options.popupWrapperSelector);
+            var self = this;
             var modaloption = {
                 type: 'popup',
                 modalClass: 'modal-popup_ajaxwishlist_magepow',
                 responsive: true,
                 innerScroll: true,
-                clickableOverlay: true,
-                closed: function(){
-                   $('.modal-popup_ajaxwishlist_magepow').remove();
-                }
+                clickableOverlay: true
             };
-            modal(modaloption, wishlistPopup);
-            wishlistPopup.modal('openModal');
+            var callforoption = modal(modaloption, $(self.options.popupWrapperSelector));
+            $(self.options.popupWrapperSelector).modal('openModal');
         },
 
         _errorHandler: function () {
@@ -148,6 +112,6 @@ define([
 
     });
 
-    return $.magepow.ajaxWishlist;
+    return $.ajaxWishlist;
 
 });

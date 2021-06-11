@@ -10,8 +10,30 @@ define([
 ], function ($, modal, customerData, storage, $t) {
     'use strict';
 
-    $.widget('magepow.customerAuthenticationPopup', {
+    $.widget('ajaxwishlist.customerAuthenticationPopup', {
+        options: {
+            login: '#customer-popup-login',
+            prevLogin: '.action.towishlist'
+        },
         _create: function () {
+            var self = this,
+                authentication_options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    buttons: false,
+                    modalClass : 'customer-popup-ajaxwishlist'
+                };
+
+            modal(authentication_options, this.element);
+
+            // Show the login form in a popup when clicking on the sign in text
+            $('body').on('click', self.options.prevLogin, function() {
+                $(self.options.login).removeClass('_disabled');
+                $(self.options.login).modal('openModal');
+                return false;
+            });
+
             this._ajaxSubmit();
         },
 
@@ -106,5 +128,5 @@ define([
         }
     });
 
-    return $.magepow.customerAuthenticationPopup;
+    return $.ajaxwishlist.customerAuthenticationPopup;
 });
