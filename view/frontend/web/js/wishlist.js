@@ -10,7 +10,7 @@ define([
 
     if ($('body').data('AjaxWishlist')) {
 
-        $.widget('magepow.wishlist', $.mage.wishlist , {
+        $.widget('.wishlist', $.mage.wishlist, {
             options: {
                 btnUpdateSelector: '.update',
                 formKeyInputSelector: 'input[name="form_key"]',
@@ -73,7 +73,6 @@ define([
             }
 
         });
-       
 
     }
 

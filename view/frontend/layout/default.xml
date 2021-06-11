@@ -3,6 +3,7 @@
     <body>
         <referenceContainer name="before.body.end">
             <block class="Magepow\AjaxWishlist\Block\Configure" template="Magepow_AjaxWishlist::ajaxwishlist.phtml" ifconfig="magepow_ajaxwishlist/general/enabled" />
+            <block class="Magepow\AjaxWishlist\Block\Form\Login" name="ajaxwishlist-popup-login" template="Magepow_AjaxWishlist::login.phtml" /> 
         </referenceContainer>
         
     </body>
