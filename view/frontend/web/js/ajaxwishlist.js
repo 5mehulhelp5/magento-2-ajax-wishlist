@@ -9,7 +9,7 @@ define([
 ], function($, modal, mageTemplate, url) {
     'use strict';
 
-    $.widget('.ajaxWishlist', {
+    $.widget('magepow.ajaxWishlist', {
 
         options: {
             addToWishlistSelector: '[data-action="add-to-wishlist"]',
@@ -113,12 +113,13 @@ define([
             modal(modaloption, wishlistPopup);
             wishlistPopup.modal('openModal');
         },
+
         _errorHandler: function () {
             console.warn("Add to the wish list unsuccessful");
         }
 
     });
 
-    return $.ajaxWishlist;
+    return $.magepow.ajaxWishlist;
 
 });

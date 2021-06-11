@@ -15,22 +15,24 @@ define([
             login: '#customer-popup-login',
             prevLogin: '.action.towishlist'
         },
-        _create: function () {
+         _create: function () {
             var self = this,
-                authentication_options = {
+                loginPopup = $(self.options.login),
+                body =  $('body');
+
+            // Show the login form in a popup when clicking on the sign in text
+            body.on('click', self.options.prevLogin, function() {
+                var authentication_options = {
                     type: 'popup',
                     responsive: true,
                     innerScroll: true,
                     buttons: false,
-                    modalClass : 'customer-popup-ajaxwishlist'
+                    modalClass : 'customer-popup-ajaxwishlist',                 
                 };
 
-            modal(authentication_options, this.element);
-
-            // Show the login form in a popup when clicking on the sign in text
-            $('body').on('click', self.options.prevLogin, function() {
-                $(self.options.login).removeClass('_disabled');
-                $(self.options.login).modal('openModal');
+                modal(authentication_options, loginPopup);
+                loginPopup.removeClass('_disabled');
+                loginPopup.modal('openModal');
                 return false;
             });
 
