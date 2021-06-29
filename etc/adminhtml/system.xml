@@ -35,7 +35,7 @@
                     <validate>validate-digits validate-digits-range digits-range-0-</validate>
                 </field>
                 <field id="image" translate="label comment" type="image" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" >
-                    <label>Store Image</label>
+                    <label>Image Login popup</label>
                     <backend_model>Magepow\AjaxWishlist\Model\Config\Backend\Image</backend_model>
                       <base_url type="media" scope_info="1">magepow/backendimage</base_url>
                 </field>
