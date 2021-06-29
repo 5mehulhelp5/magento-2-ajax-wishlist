@@ -27,7 +27,11 @@ define([
                     responsive: true,
                     innerScroll: true,
                     buttons: false,
-                    modalClass : 'customer-popup-ajaxwishlist',                 
+                    modalClass : 'customer-popup-ajaxwishlist',
+                    closed: function(){
+                       $('.customer-popup-ajaxwishlist ').remove();
+                       body.find('.modals-overlay').css('z-index', '899');
+                    }                  
                 };
 
                 modal(authentication_options, loginPopup);
