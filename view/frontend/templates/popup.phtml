@@ -30,13 +30,13 @@ $message = $helper->getConfigModule('general/message');
         </a>
         <h2 class="product-name"><?php echo $_product->getName() ?></h2>
     </div>
-    <h3 class="mgp-message-successs"><?php echo $message ? $message : __('You added this product to the comparison list') ?></h3>
+    <h3 class="mgp-message-successs"><?php echo $message ? $message : __('You added this product to the wishlist list') ?></h3>
     <div class="ajaxwishlist-buttons">
         <button type="button" id="ajaxwishlist_btn_close_popup" class="action primary mgp-wishlist-close" title="<?php echo __('Close') ?>">
             <span><?php echo __('Close ') ?></span>
             <?php
-                 if ($popupTTL = $helper->getConfigModule('general/success_message_text')) {?>
-                 (<span class="compare-autoclose-countdown"><?php echo $popupTTL ?></span>)
+                 if ($popupTTL = $helper->getConfigModule('general/popupttl')) {?>
+                 (<span class="wishlist-autoclose-countdown"><?php echo $popupTTL ?></span>)
                  <?php }?>
         </button>
         <button type="button" id="wishlist_checkout" class="action wishlist primary"

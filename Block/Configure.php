@@ -65,7 +65,7 @@ class Configure extends \Magento\Framework\View\Element\Template
         return [
             'isShowSpinner' => (bool) $this->ajaxWishlistHelper->getConfigModule('general/show_spinner'),
             'isShowSuccessMessage' => $this->ajaxWishlistHelper->getConfigModule('general/show_success_message'),
-            'successMessageText' => $this->ajaxWishlistHelper->getConfigModule('general/success_message_text'),
+            'successMessageText' => $this->ajaxWishlistHelper->getConfigModule('general/message'),
             'customerLoginUrl' => $this->_urlBuilder->getUrl(Url::ROUTE_ACCOUNT_LOGIN),
             'popupTtl' => $this->ajaxWishlistHelper->getConfigModule('general/popupttl')
         ];

@@ -25,7 +25,7 @@
                     <comment>Turn on to show success message after adding to wishlist.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="success_message_text" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="message" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Success Message Text</label>
                     <comment>Change the message that appears after adding to wishlist.</comment>
                 </field>
