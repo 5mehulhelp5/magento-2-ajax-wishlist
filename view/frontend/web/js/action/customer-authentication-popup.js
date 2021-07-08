@@ -57,7 +57,7 @@ define([
                     if (form.hasClass('form-create-account')) {
                         $.ajax({
                             url: $(e.target).attr('action'),
-                            data: $(e.target).serializeArray(),
+                            data: $(e.target).serialize(),
                             showLoader: true,
                             type: 'POST',
                             dataType: 'json',
