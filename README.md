@@ -1,8 +1,4 @@
 
-[![Latest Stable Version](https://poser.pugx.org/magepow/ajaxwishlist/v/stable)](https://packagist.org/packages/magepow/ajaxwishlist)
-[![Total Downloads](https://poser.pugx.org/magepow/ajaxwishlist/downloads)](https://packagist.org/packages/magepow/ajaxwishlist)
-[![Daily Downloads](https://poser.pugx.org/magepow/ajaxwishlist/d/daily)](https://packagist.org/packages/magepow/ajaxwishlist)
-
 ## Magento 2 Ajax Wishlist (Magepow Ajax Wishlist extension Free)
 
 **Ajax Wish List** It goes without saying that everyone has a wishlist. When it comes to e-commercial businesses, the wishlists are considered a useful tool to improve customer experiences as well as enhance conversion rates.
@@ -35,6 +31,7 @@ Wishlist is a very important feature that most e-commerce websites must use
 
 [![Latest Stable Version](https://poser.pugx.org/magepow/ajaxwishlist/v/stable)](https://packagist.org/packages/magepow/ajaxwishlist)
 [![Total Downloads](https://poser.pugx.org/magepow/ajaxwishlist/downloads)](https://packagist.org/packages/magepow/ajaxwishlist)
+[![Daily Downloads](https://poser.pugx.org/magepow/ajaxwishlist/d/daily)](https://packagist.org/packages/magepow/ajaxwishlist)
 
 ## How to use Ajax Wishlist extension
 Before you continue, ensure you meet the following requirements:
