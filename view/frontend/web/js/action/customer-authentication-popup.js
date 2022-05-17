@@ -22,21 +22,21 @@ define([
 
             // Show the login form in a popup when clicking on the sign in text
             body.on('click', self.options.prevLogin, function() {
-                var authentication_options = {
-                    type: 'popup',
-                    responsive: true,
-                    innerScroll: true,
-                    buttons: false,
-                    modalClass : 'customer-popup-ajaxwishlist',
-                    closed: function(){
-                       $('.customer-popup-ajaxwishlist ').remove();
-                       body.find('.modals-overlay').css('z-index', '899');
-                    }                  
-                };
+                if($('.customer-popup-ajaxwishlist').length){
+                    loginPopup.modal('openModal');
+                }else{
+                    var authentication_options = {
+                        type: 'popup',
+                        responsive: true,
+                        innerScroll: true,
+                        buttons: false,
+                        modalClass : 'customer-popup-ajaxwishlist',                 
+                    };
 
-                modal(authentication_options, loginPopup);
-                loginPopup.removeClass('_disabled');
-                loginPopup.modal('openModal');
+                    modal(authentication_options, loginPopup);
+                    loginPopup.removeClass('_disabled');
+                    loginPopup.modal('openModal');
+                }
                 return false;
             });
 
