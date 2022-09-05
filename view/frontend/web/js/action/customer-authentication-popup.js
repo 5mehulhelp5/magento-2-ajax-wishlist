@@ -48,7 +48,7 @@ define([
                 form = this.element.find('form'),
                 inputElement = form.find('input');
 
-            inputElement.keyup(function (e) {
+            inputElement.on("keyup", function(e) {
                 self.element.find('.messages').html('');
             });
 
