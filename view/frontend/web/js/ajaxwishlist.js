@@ -24,7 +24,8 @@ define([
             addToWishlistButtonDisabledClass: 'disabled',
             addToWishlistButtonTextWhileAdding: '',
             addToWishlistButtonTextAdded: '',
-            addToWishlistButtonTextDefault: ''
+            addToWishlistButtonTextDefault: '',
+            enabled: true
         },
 
         _create: function() {
@@ -32,6 +33,7 @@ define([
             this._bind();
             this.viewWishlist();
             this.closePopup();
+            window.magepowWishlist = self.options.enabled;
         },
 
         closePopup: function() {
