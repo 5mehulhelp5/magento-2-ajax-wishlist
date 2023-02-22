@@ -33,7 +33,6 @@ define([
             this._bind();
             this.viewWishlist();
             this.closePopup();
-            window.magepowWishlist = self.options.enabled;
         },
 
         closePopup: function() {
@@ -54,7 +53,7 @@ define([
                 this.options.removeFromWishlistSelector
             ];
 
-            $('body').on('click', selectors.join(','), $.proxy(this._processViaAjax, this));
+            self.element.find(selectors.join(',')).off('click').on('click', $.proxy(this._processViaAjax, this));
         },
 
 
