@@ -25,11 +25,11 @@ define([
             addToWishlistButtonTextWhileAdding: '',
             addToWishlistButtonTextAdded: '',
             addToWishlistButtonTextDefault: '',
-            enabled: true
+            enabled: true,
+            login: '#customer-popup-login',
         },
 
         _create: function() {
-            var self = this;
             this._bind();
             this.viewWishlist();
             this.closePopup();
@@ -79,11 +79,35 @@ define([
             event.preventDefault();
         },
 
+        _showPopupLogin: function(){
+            var self   = this,
+                loginPopup = $(self.options.login);
+            if($('.customer-popup-ajaxwishlist').length){
+                loginPopup.modal('openModal');
+            }else {
+                var authentication_options = {
+                    type: 'popup',
+                    modalClass : 'customer-popup-ajaxwishlist',
+                    responsive: true,
+                    innerScroll: true,
+                    buttons: false,            
+                };
+                modal(authentication_options, loginPopup);
+                loginPopup.removeClass('_disabled');
+                loginPopup.modal('openModal');
+                
+            }
+            return false;
+        },
+
         _successHandler: function(data) {
             var self = this,
                 wishlistPopup = $(self.options.popupWrapperSelector),
                 body = $('body');
-            if (!data.success && data.error == 'not_logged_in') return;
+            if (!data.success && data.error == 'not_logged_in'){
+                self._showPopupLogin();
+                return;
+            };
             $(this.options.wishlistBlockSelector).replaceWith(data.wishlist);
             
             if (this.options.isShowSuccessMessage && data.message) {

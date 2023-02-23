@@ -16,30 +16,6 @@ define([
             prevLogin: 'a.towishlist'
         },
          _create: function () {
-            var self = this,
-                loginPopup = $(self.options.login),
-                body =  $('body');
-
-            // Show the login form in a popup when clicking on the sign in text
-            body.on('click', self.options.prevLogin, function() {
-                if($('.customer-popup-ajaxwishlist').length){
-                    loginPopup.modal('openModal');
-                }else{
-                    var authentication_options = {
-                        type: 'popup',
-                        responsive: true,
-                        innerScroll: true,
-                        buttons: false,
-                        modalClass : 'customer-popup-ajaxwishlist',                 
-                    };
-
-                    modal(authentication_options, loginPopup);
-                    loginPopup.removeClass('_disabled');
-                    loginPopup.modal('openModal');
-                }
-                return false;
-            });
-
             this._ajaxSubmit();
         },
 
