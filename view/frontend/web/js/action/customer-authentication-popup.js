@@ -6,7 +6,7 @@ define([
     'mage/storage',
     'mage/translate',
     'mage/mage',
-    'jquery/ui'
+    'jquery-ui-modules/widget'
 ], function ($, modal, customerData, storage, $t) {
     'use strict';
 

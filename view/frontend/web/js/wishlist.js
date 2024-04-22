@@ -2,7 +2,7 @@ define([
     'jquery',
     'Magento_Ui/js/modal/alert',
     'Magepow_AjaxWishlist/js/ajaxwishlist',
-    'jquery/ui',
+    'jquery-ui-modules/widget',
     'Magento_Wishlist/js/wishlist',
     'mage/loader'
 ], function($, alert) {

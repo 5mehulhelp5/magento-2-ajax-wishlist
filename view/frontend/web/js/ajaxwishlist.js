@@ -3,7 +3,7 @@ define([
     'Magento_Ui/js/modal/modal',
     'mage/translate',
     'mage/url',
-    'jquery/ui',
+    'jquery-ui-modules/widget',
     'mage/loader' 
 ], function($, modal, $t, url) {
     'use strict';
