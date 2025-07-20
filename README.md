@@ -1,6 +1,6 @@
 [<img src="https://github.com/magepow/themeforest/blob/master/shopify/shopify_affiliate.jpg" >](https://shopify.pxf.io/VyL446)
 
-## Magento 2 Ajax Wishlist (Magepow Ajax Wishlist extension Free)
+## Magento 2 Ajax Wishlist (Magepow Ajax Wishlist extension)
 
 **Ajax Wish List** It goes without saying that everyone has a wishlist. When it comes to e-commercial businesses, the wishlists are considered a useful tool to improve customer experiences as well as enhance conversion rates.
 
